@@ -1,4 +1,4 @@
-const backendDomin = "https://elitemart.vercel.app"
+const backendDomin = "https://elitemart-api.vercel.app"
 
 const SummaryApi = {
     signUP : {
