@@ -10,6 +10,12 @@ import AllProducts from '../pages/AllProducts'
 import CategoryProduct from '../pages/CategoryProduct'
 import ProductDetails from '../pages/ProductDetails'
 import Cart from '../pages/Cart'
+import AboutUs from '../pages/AboutUs'
+import ContactUs from '../pages/ContactUs'
+import ReturnPolicy from '../pages/ReturnPolicy'
+import PrivacyPolicy from '../pages/PrivacyPolicy'
+import Security from '../pages/Security'
+import TermsOfUse from '../pages/TermsOfUse'
 import SearchProduct from '../pages/SearchProduct'
 
 const router = createBrowserRouter([
@@ -44,6 +50,30 @@ const router = createBrowserRouter([
             {
                 path : 'cart',
                 element : <Cart/>
+            },
+            {
+                path : "about-us",
+                element : <AboutUs/>
+            },
+            {
+                path : "contact-us",
+                element : <ContactUs/>
+            },
+            {
+                path : "return-policy",
+                element : <ReturnPolicy/>
+            },
+            {
+                path : "security",
+                element : <Security/>
+            },
+            {
+                path : "privacy-policy",
+                element : <PrivacyPolicy/>
+            },
+            {
+                path : "terms-of-use",
+                element : <TermsOfUse/>
             },
             {
                 path : "search",
