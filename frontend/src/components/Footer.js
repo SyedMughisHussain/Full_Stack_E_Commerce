@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Footer = () => {
   return (
@@ -6,22 +8,11 @@ const Footer = () => {
       <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
         <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
-            <span className="ml-3 text-xl">Tailblocks</span>
+            <Logo w={70} h={50} />
+            <span className="ml-3 text-xl">E-Commerce</span>
           </a>
           <p className="mt-2 text-sm text-gray-500">
-            Air plant banjo lyft occupy retro adaptogen indego
+            Shop outside the box
           </p>
         </div>
         <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
@@ -31,16 +22,36 @@ const Footer = () => {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a className="text-gray-600 hover:text-gray-800">About Us</a>
+                <Link
+                  to={"about-us"}
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  About Us
+                </Link>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Contact Us</a>
+                <Link
+                  to={"contact-us"}
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  Contact Us
+                </Link>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Careers</a>
+                <Link
+                  to={""}
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  Careers
+                </Link>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Our Stories</a>
+                <Link
+                  to={""}
+                  className="text-gray-600 hover:text-gray-800"
+                >
+                  Our Stories
+                </Link>
               </li>
             </nav>
           </div>
@@ -56,7 +67,9 @@ const Footer = () => {
                 <a className="text-gray-600 hover:text-gray-800">Shipping</a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Cancellation & Returns</a>
+                <a className="text-gray-600 hover:text-gray-800">
+                  Cancellation & Returns
+                </a>
               </li>
               <li>
                 <a className="text-gray-600 hover:text-gray-800">FAQ</a>
@@ -69,16 +82,16 @@ const Footer = () => {
             </h2>
             <nav className="list-none mb-10">
               <li>
-                <a href="" className="text-gray-600 hover:text-gray-800">Return Policy</a>
+              <Link to={"return-policy"} className="text-gray-600 hover:text-gray-800">Return Policy</Link>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Security</a>
+              <Link to={"security"} className="text-gray-600 hover:text-gray-800">Security</Link>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Privacy Policy</a>
+              <Link to={"privacy-policy"} className="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Terms Of Use</a>
+              <Link to={"terms-of-use"} className="text-gray-600 hover:text-gray-800">Terms Of Use</Link>
               </li>
             </nav>
           </div>
@@ -106,15 +119,7 @@ const Footer = () => {
       <div className="bg-gray-100">
         <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
           <p className="text-gray-500 text-sm text-center sm:text-left">
-            © 2020 Tailblocks —
-            <a
-              href="https://twitter.com/knyttneve"
-              rel="noopener noreferrer"
-              className="text-gray-600 ml-1"
-              target="_blank"
-            >
-              @knyttneve
-            </a>
+            © 2024 E-Commerce 
           </p>
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
             <a className="text-gray-500">
