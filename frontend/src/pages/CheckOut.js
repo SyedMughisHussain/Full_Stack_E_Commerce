@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import SummaryApi from "../common";
 import Context from "../context";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-const Cart = () => {
+const CheckOut = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const context = useContext(Context);
@@ -108,15 +108,153 @@ const Cart = () => {
     (preve, curr) => preve + curr.quantity * curr?.productId?.sellingPrice,
     0
   );
+
+
+  const firstName = useRef(); 
+  const lastName = useRef(); 
+  const address = useRef(); 
+  const city = useRef(); 
+  const province = useRef(); 
+  const zipCode = useRef(); 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(firstName.current.previousValue);
+    console.log(lastName.current.value);
+    console.log(address.current.value);
+    console.log(city.current.value);
+    console.log(province.current.value);
+    console.log(zipCode.current.value);
+    console.log(totalPrice);
+    console.log(totalQty);
+}
+
   return (
-    <div className="container mx-auto">
+    <div className="container flex">
+      <div className="h-32 w-[700px] py-5 px-10">
+        <h1 className="font-bold text-[30px] ml-44 mb-5">Shipping</h1>
+        <form onSubmit={handleSubmit} className="w-full max-w-lg ">
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="grid-first-name"
+              >
+                First Name
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="grid-first-name"
+                type="text"
+                placeholder="Syed"
+                required
+                ref={firstName}
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-3">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="grid-last-name"
+              >
+                Last Name
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-last-name"
+                type="text"
+                placeholder="Hussain"
+                required
+                ref={lastName}
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap -mx-3 mb-6">
+            <div className="w-full px-3">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Address
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-password"
+                type="text"
+                placeholder="Enter your address"
+                required
+                ref={address}
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap -mx-3 mb-2">
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="grid-city"
+              >
+                City
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-city"
+                type="text"
+                placeholder="Karachi"
+                required
+                ref={city}
+              />
+            </div>
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="grid-city"
+              >
+                State/Province
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-city"
+                type="text"
+                placeholder="Sindh"
+                required
+                ref={province}
+              />
+            </div>
+            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+              <label
+                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                htmlFor="grid-zip"
+              >
+                Zip
+              </label>
+              <input
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-zip"
+                type="text"
+                placeholder={90210}
+                required
+                ref={zipCode}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="bg-red-600 p-2 text-white w-full mt-2"
+              onClick={() => {
+                navigate("/checkout");
+              }}
+            >
+              Place your Order
+            </button>
+          </div>
+        </form>
+      </div>
       <div className="text-center text-lg my-3">
         {data.length === 0 && !loading && (
           <p className="bg-white py-5">No Data</p>
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4">
+      <div className=" gap-10 lg:justify-between p-4">
         {/***view product */}
         <div className="w-full max-w-3xl">
           {loading
@@ -132,7 +270,7 @@ const Cart = () => {
                 return (
                   <div
                     key={product?._id + "Add To Cart Loading"}
-                    className="w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]"
+                    className="w-[500px] bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]"
                   >
                     <div className="w-32 h-32 bg-slate-200">
                       <img
@@ -195,7 +333,7 @@ const Cart = () => {
           {loading ? (
             <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
           ) : (
-            <div className="h-36 bg-white">
+            <div className=" w-[500px] h-fit bg-white">
               <h2 className="text-white bg-red-600 px-4 py-1">Summary</h2>
               <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
                 <p>Quantity</p>
@@ -206,15 +344,6 @@ const Cart = () => {
                 <p>Total Price</p>
                 <p>{displayINRCurrency(totalPrice)}</p>
               </div>
-
-              <button
-                className="bg-blue-600 p-2 text-white w-full mt-2"
-                onClick={() => {
-                  navigate("/checkout");
-                }}
-              >
-                Checkout
-              </button>
             </div>
           )}
         </div>
@@ -223,4 +352,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CheckOut;

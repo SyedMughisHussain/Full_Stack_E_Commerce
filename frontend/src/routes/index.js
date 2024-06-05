@@ -17,6 +17,8 @@ import PrivacyPolicy from '../pages/PrivacyPolicy'
 import Security from '../pages/Security'
 import TermsOfUse from '../pages/TermsOfUse'
 import SearchProduct from '../pages/SearchProduct'
+import Order from '../pages/Order'
+import CheckOut from '../pages/CheckOut'
 
 const router = createBrowserRouter([
     {
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
             {
                 path : "about-us",
                 element : <AboutUs/>
+            },
+            {
+                path : "orders",
+                element : <Order/>
+            },
+            {
+                path : "checkout",
+                element : <CheckOut/>
             },
             {
                 path : "contact-us",
