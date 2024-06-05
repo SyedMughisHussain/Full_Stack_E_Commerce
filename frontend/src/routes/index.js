@@ -19,6 +19,8 @@ import TermsOfUse from '../pages/TermsOfUse'
 import SearchProduct from '../pages/SearchProduct'
 import Order from '../pages/Order'
 import CheckOut from '../pages/CheckOut'
+import ThankYouPage from '../pages/ThankYou'
+import AdminOrders from '../pages/AdminOrders'
 
 const router = createBrowserRouter([
     {
@@ -90,6 +92,10 @@ const router = createBrowserRouter([
                 element : <SearchProduct/>
             },
             {
+                path: "thankyou",
+                element: <ThankYouPage/>
+            },
+            {
                 path : "admin-panel",
                 element : <AdminPanel/>,
                 children : [
@@ -100,6 +106,10 @@ const router = createBrowserRouter([
                     {
                         path : "all-products",
                         element : <AllProducts/>
+                    },
+                    {
+                        path : "all-orders",
+                        element : <AdminOrders/>
                     }
                 ]
             },

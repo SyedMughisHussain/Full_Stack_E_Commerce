@@ -4,6 +4,7 @@ import Context from "../context";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"
 
 const CheckOut = () => {
   const [data, setData] = useState([]);
@@ -109,25 +110,50 @@ const CheckOut = () => {
     0
   );
 
+  const firstName = useRef();
+  const lastName = useRef();
+  const address = useRef();
+  const city = useRef();
+  const province = useRef();
+  const zipCode = useRef();
 
-  const firstName = useRef(); 
-  const lastName = useRef(); 
-  const address = useRef(); 
-  const city = useRef(); 
-  const province = useRef(); 
-  const zipCode = useRef(); 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(firstName.current.previousValue);
-    console.log(lastName.current.value);
-    console.log(address.current.value);
-    console.log(city.current.value);
-    console.log(province.current.value);
-    console.log(zipCode.current.value);
-    console.log(totalPrice);
-    console.log(totalQty);
-}
+
+    const orderItems = data.map((item) => ({
+      productId: item.productId._id,
+      quantity: item.quantity,
+    }));
+
+    await fetch("http://localhost:8080/api/placedNewOrder", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        orderPrice: totalPrice,
+        orderItems: orderItems,
+        address: address.current.value,
+      }),
+    })
+      .then(() => {
+        console.log("Order Placed");
+        toast.success("Order Placed successfully")
+        navigate("/thankyou");
+      })
+      .catch(() => {
+        console.log("Error Occured");
+        toast.error("Error Occured while ordering")
+      });
+
+    firstName.current.Value = "";
+    lastName.current.value = "";
+    address.current.value = "";
+    city.current.value = "";
+    province.current.value = "";
+    zipCode.current.value = "";
+  };
 
   return (
     <div className="container flex">
@@ -204,7 +230,7 @@ const CheckOut = () => {
               />
             </div>
             <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label
+              <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 htmlFor="grid-city"
               >
