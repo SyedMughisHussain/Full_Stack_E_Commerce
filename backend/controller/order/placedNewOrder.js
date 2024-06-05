@@ -3,9 +3,14 @@ const orderModel = require("../../models/order");
 const placedNewOrder = async (req, res) => {
   try {
     const userId = req.userId;
-    const { orderPrice, productId, quantity, address } = req.body;
+    const { orderPrice, orderItems, address } = req.body;
 
-    const newOrder = orderModel.create({});
+    const newOrder = orderModel.create({
+      orderPrice,
+      customer: userId,
+      orderItems,
+      address,
+    });
 
     res.json({
       newOrder,
@@ -23,4 +28,4 @@ const placedNewOrder = async (req, res) => {
   }
 };
 
-modeule.exports = placedNewOrder;
+module.exports = placedNewOrder;
