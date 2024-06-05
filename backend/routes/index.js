@@ -25,7 +25,7 @@ const searchProduct = require('../controller/product/searchProduct')
 const filterProductController = require('../controller/product/filterProduct')
 const placedNewOrder = require('../controller/order/placedNewOrder')
 const getAllOrders = require('../controller/order/getAllOrders')
-
+const getOrdersByUser = require('../controller/order/getOrderByUser')
 
 
 router.post("/signup",userSignUpController)
@@ -57,6 +57,7 @@ router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
 
 //orders
 router.get("/getAllOrders", getAllOrders)
+router.get("/getOrdersByUser",authToken, getOrdersByUser)
 router.post("/placedNewOrder",authToken, placedNewOrder)
 
 module.exports = router
