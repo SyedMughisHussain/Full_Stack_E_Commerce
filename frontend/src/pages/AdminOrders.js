@@ -7,10 +7,13 @@ const AdminOrders = () => {
 
   const fetchAllOrders = async () => {
     try {
-      const getData = await fetch("http://localhost:8080/api/getAllOrders", {
-        method: "GET",
-        credentials: "include",
-      });
+      const getData = await fetch(
+        "https://full-stack-e-commerce-umber.vercel.app/api/getAllOrders",
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
 
       const dataResponse = await getData.json();
 

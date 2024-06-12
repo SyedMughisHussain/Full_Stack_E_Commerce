@@ -5,13 +5,16 @@ const Order = () => {
   const [orders, setOrders] = useState([]);
 
   const fetchOrders = async () => {
-    const response = await fetch("http://localhost:8080/api/getOrdersByUser", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://full-stack-e-commerce-umber.vercel.app/api/getOrdersByUser",
+      {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
 
     const responseData = await response.json();
 

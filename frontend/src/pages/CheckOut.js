@@ -4,7 +4,7 @@ import Context from "../context";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 
 const CheckOut = () => {
   const [data, setData] = useState([]);
@@ -125,26 +125,29 @@ const CheckOut = () => {
       quantity: item.quantity,
     }));
 
-    await fetch("http://localhost:8080/api/placedNewOrder", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        orderPrice: totalPrice,
-        orderItems: orderItems,
-        address: address.current.value,
-      }),
-    })
+    await fetch(
+      "https://full-stack-e-commerce-umber.vercel.app/api/placedNewOrder",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          orderPrice: totalPrice,
+          orderItems: orderItems,
+          address: address.current.value,
+        }),
+      }
+    )
       .then(() => {
         console.log("Order Placed");
-        toast.success("Order Placed successfully")
+        toast.success("Order Placed successfully");
         navigate("/thankyou");
       })
       .catch(() => {
         console.log("Error Occured");
-        toast.error("Error Occured while ordering")
+        toast.error("Error Occured while ordering");
       });
 
     firstName.current.Value = "";
