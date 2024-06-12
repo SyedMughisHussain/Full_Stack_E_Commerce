@@ -19,6 +19,15 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to E-Commerce Backend",
+    success: true,
+    error: false,
+    data: [],
+  });
+});
+
 app.use("/api", router);
 
 const PORT = process.env.PORT || 8080;
