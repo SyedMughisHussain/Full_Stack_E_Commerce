@@ -126,7 +126,7 @@ const CheckOut = () => {
     }));
 
     await fetch(
-      "https://full-stack-e-commerce-umber.vercel.app/api/placedNewOrder",
+      "https://full-stack-e-commerce-delta.vercel.app/api/placedNewOrder",
       {
         method: "POST",
         credentials: "include",
