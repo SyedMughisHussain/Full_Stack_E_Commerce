@@ -6,7 +6,7 @@ const Order = () => {
 
   const fetchOrders = async () => {
     const response = await fetch(
-      "https://full-stack-e-commerce-umber.vercel.app/api/getOrdersByUser",
+      "https://full-stack-e-commerce-delta.vercel.app/api/getOrdersByUser",
       {
         method: "GET",
         credentials: "include",

@@ -8,7 +8,7 @@ const AdminOrders = () => {
   const fetchAllOrders = async () => {
     try {
       const getData = await fetch(
-        "https://full-stack-e-commerce-umber.vercel.app/api/getAllOrders",
+        "https://full-stack-e-commerce-delta.vercel.app/api/getAllOrders",
         {
           method: "GET",
           credentials: "include",
